@@ -21,7 +21,7 @@ All the **EvaluationService** implementation classes must implement the **evalua
 
 All custom implementations must be deployed to Media Management.
 
-###Deploy new custom classes
+### Deploy new custom classes
 To deploy new custom classes:
 1. Build your custom classes in a JAR file. For example, MyClasses.jar.
 2. Copy the JAR file to the <TEAMS_HOME>/plugins directory.
