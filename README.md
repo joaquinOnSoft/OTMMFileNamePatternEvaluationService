@@ -36,10 +36,12 @@ To deploy new custom classes:
 
 ##### To deploy customizations on TomEE:
 
-1. Deploy the OTMM customization in the <TEAMS_HOME>/plugins directory.
-2. At a command prompt or a terminal, navigate to the <TEAMS_HOME>/install/
-ant folder, and then run the following Ant target:
+1. Deploy the OTMM customization in the **<TEAMS_HOME>/plugins** directory.
+2. At a command prompt or a terminal, navigate to the **<TEAMS_HOME>/install/ant** folder, and then run the following Ant target:
+
+```
 ant deploy-customizations
+``` 
 
 ## log4j.xml
 
