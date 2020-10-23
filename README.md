@@ -48,7 +48,9 @@ ant deploy-customizations
 Log4j is a simple and flexible logging framework. The most common configuration options issuing  log4j.xml
 
 Follow these steps:
-1.	Copy these text:
+1.	Copy these text into **log4j.xml** file located at **C:\Apps\TomEE-OTMM\conf**:
+
+> NOTE: the log4j.xml path can vary in your installation.
 
 ``` 
 <!-- Custom added by Joaquín -->
