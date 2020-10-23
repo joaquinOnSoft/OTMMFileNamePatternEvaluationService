@@ -1,7 +1,9 @@
 Evaluation condition to be used in an OpenText Media Manager (OTMM) workflow. 
 This condition will evalute if the asset file name match a specific pattern (expressed as regular expression:
 
-> HB_\d{2}_\d{2}_[a-zA-Z0-9]{1,17}_((\d{2})|(##(|\d{2})))_((4c)|(1c))_((DE)|(AT)|(CH)|(CZ)|(FCH)|(ICH)|(NL)|(SE)|(RO)|(LU)|(SK))[.]((tif)|(tiff)|(TIF)|(TIFF)|(jpg)|(JPG)|(jpeg)|(JPEG)|(eps)|(EPS)|(psd)|(PSD))
+``` 
+HB_\d{2}_\d{2}_[a-zA-Z0-9]{1,17}_((\d{2})|(##(|\d{2})))_((4c)|(1c))_((DE)|(AT)|(CH)|(CZ)|(FCH)|(ICH)|(NL)|(SE)|(RO)|(LU)|(SK))[.]((tif)|(tiff)|(TIF)|(TIFF)|(jpg)|(JPG)|(jpeg)|(JPEG)|(eps)|(EPS)|(psd)|(PSD))
+``` 
 
 Valid File name examples:
 
@@ -104,6 +106,6 @@ Import the indicated set of files to the indicated project folders:
 
 
 **Set 4**
-1. From: **C:\Apps\MediaManagement\ear\artesia.ear\**
+1. From: **C:\Apps\MediaManagement\ear\artesia.ear**
  - artesia-ejb.jar
 2. To project folder: **lib**
