@@ -50,8 +50,6 @@ Log4j is a simple and flexible logging framework. The most common configuration 
 Follow these steps:
 1.	Copy these text:
 
-> NOTE: the log4j.xml path can vary in your installation.
-
 ``` 
 <!-- Custom added by Joaquín -->
 			
@@ -68,6 +66,7 @@ Follow these steps:
 </logger>
 		
 ``` 
+
 2. Paste the paragraph before the **</log4j:configuration>** label into **C:\Apps\TomEE-OTMM\conf\log4j.xml**
 
 
