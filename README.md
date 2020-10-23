@@ -15,7 +15,7 @@ Valid File name examples:
 
 ### Evaluate
 Evaluates a given value. You can specify whether it evaluates an expression, a variable, or a custom implementation class.
-A standard Java EvaluationService interface is defined to perform evaluation. 
+A standard Java **EvaluationService interface** is defined to perform evaluation. 
 
 All the **EvaluationService** implementation classes must implement the **evaluate()** method and return the evaluation result. 
 
