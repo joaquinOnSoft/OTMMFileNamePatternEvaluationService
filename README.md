@@ -85,21 +85,19 @@ Follow these steps:
 ``` 
 <!-- Custom added by Joaquín -->
 			
-<logger name="com.opentext.otmm.sc.jobmodeler">
-	<level name="DEBUG"/>
-	<appender-ref ref="console" />
-	<appender-ref ref="file" />
-</logger>
-			
-<logger name="com.opentext.otmm.sc.jobmodeler.helpers">
-	<level name="DEBUG"/>
-	<appender-ref ref="console" />
-	<appender-ref ref="file" />
-</logger>
+		<logger name="com.opentext.otmm.sc.jobmodeler"  level="DEBUG" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+			<AppenderRef ref="FILE" />
+		</logger>
+					
+		<logger name="com.opentext.otmm.sc.jobmodeler.helpers" level="DEBUG" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+			<AppenderRef ref="FILE" />
+		</logger>	
 		
 ``` 
 
-2. Paste the paragraph before the **</log4j:configuration>** label into **C:\Apps\TomEE-OTMM\conf\log4j.xml**
+2. Paste the paragraph before the **</log4j:configuration>** label into **C:\Apps\TomEE-OTMM\conf\log4j2.xml**
 
 
 # Required .jar files
