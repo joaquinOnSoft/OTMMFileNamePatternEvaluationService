@@ -41,6 +41,10 @@ public class FileNamePatternEvaluationService implements EvaluationService {
 	
 	private static final String FILE_NAME_PATTERN = "HB_\\d{2}_\\d{2}_[a-zA-Z0-9]{1,17}_((\\d{2})|(##(|\\d{2})))_((4c)|(1c))_((DE)|(AT)|(CH)|(CZ)|(FCH)|(ICH)|(NL)|(SE)|(RO)|(LU)|(SK))[.]((tif)|(tiff)|(TIF)|(TIFF)|(jpg)|(JPG)|(jpeg)|(JPEG)|(eps)|(EPS)|(psd)|(PSD))";
 	
+	public FileNamePatternEvaluationService() {
+		log.debug("FileNamePatternEvaluationService instanciated...");
+	}
+	
 	@Override
 	public String evaluate(JobData data, JobContext context, SecuritySession session) {
 		boolean evaluation = true;
@@ -50,22 +54,29 @@ public class FileNamePatternEvaluationService implements EvaluationService {
 		List<AssetIdentifier> assetIds = JobHelper.getAssetIds(context.getData(), session);
 		log.debug("Assets ids: " + assetIds);
 		
-		TeamsIdentifier teamsFieldId = new TeamsIdentifier(FIELD_ASSET_NAME);
-		MetadataCollection[] metaCol = MetadataHelper.getMetadataForAssets(assetIds, teamsFieldId);
-		
-		TeamsIdentifier fieldAssetNameId = new TeamsIdentifier(FIELD_ASSET_NAME);
-		MetadataField  field = null;
-		String fileName = null;
-		
-		for(MetadataCollection col: metaCol) {
-			field = (MetadataField) col.findElementById(fieldAssetNameId);
-			if(field != null) {
-				fileName = field.getValue().getStringValue();
-				log.debug("evaluating file: " + fileName);
-				evaluation = evaluation && fileName.matches(FILE_NAME_PATTERN);
-				log.debug("Evaluation result: " + evaluation);
+		if(assetIds != null) {
+			TeamsIdentifier teamsFieldId = new TeamsIdentifier(FIELD_ASSET_NAME);
+			MetadataCollection[] metaCol = MetadataHelper.getMetadataForAssets(assetIds, teamsFieldId);
+			
+			TeamsIdentifier fieldAssetNameId = new TeamsIdentifier(FIELD_ASSET_NAME);
+			MetadataField  field = null;
+			String fileName = null;
+			
+			for(MetadataCollection col: metaCol) {
+				field = (MetadataField) col.findElementById(fieldAssetNameId);
+				if(field != null) {
+					fileName = field.getValue().getStringValue();
+					log.debug("evaluating file: " + fileName);
+					evaluation = evaluation && fileName.matches(FILE_NAME_PATTERN);
+					log.debug("Evaluation result: " + evaluation);
+				}
 			}
 		}
+		else {
+			log.info("No assets attached to the task");
+		}
+		
+		log.debug("End evaluation... " + evaluation);
 		
 		return Boolean.toString(evaluation);
 	}

@@ -1,5 +1,7 @@
+# OTMM Filename Pattern Evaluation Service
 Evaluation condition to be used in an OpenText Media Manager (OTMM) workflow. 
-This condition will evalute if the asset file name match a specific pattern (expressed as regular expression:
+
+This condition will evaluate if the asset filename matches a specific pattern (expressed as a regular expression):
 
 ``` 
 HB_\d{2}_\d{2}_[a-zA-Z0-9]{1,17}_((\d{2})|(##(|\d{2})))_((4c)|(1c))_((DE)|(AT)|(CH)|(CZ)|(FCH)|(ICH)|(NL)|(SE)|(RO)|(LU)|(SK))[.]((tif)|(tiff)|(TIF)|(TIFF)|(jpg)|(JPG)|(jpeg)|(JPEG)|(eps)|(EPS)|(psd)|(PSD))
@@ -12,8 +14,18 @@ Valid File name examples:
  HB_16_10_hello_##20_1c_AT.jpeg 
 ``` 
 
+## Generate project .jar file (in Eclipse)
+1. Right click on Project folder
+2. Click on **Export**
+3. Select **JAR file**
+4. Click on **Next**
+5. Select only **src** folder at **Select the resource to export** list
+6. Check **Select class files an resource**
+7. Set **Select the export destination: JAR file**: **OTMM-condition-evaluation.jar**
+6. Click on **Finish**
 
-### Evaluate
+
+## Evaluate
 Evaluates a given value. You can specify whether it evaluates an expression, a variable, or a custom implementation class.
 A standard Java **EvaluationService interface** is defined to perform evaluation. 
 
@@ -21,20 +33,20 @@ All the **EvaluationService** implementation classes must implement the **evalua
 
 All custom implementations must be deployed to Media Management.
 
-### Deploy new custom classes
+## Deploy new custom classes
 To deploy new custom classes:
 1. Build your custom classes in a JAR file. For example, MyClasses.jar.
 2. Copy the JAR file to the <TEAMS_HOME>/plugins directory.
 3. Deploy the JAR to OTMM.
 
-#### Deploy customizations
+### Deploy customizations
 > **Important**
 
 > If you add new files or make modifications to existing files in artesia-ejb.jar, your changes are preserved when you upgrade OTMM if you copy these files to the <TEAMS_HOME>/staging/ear.add/ejb.add folder. If you are adding an existing file to the staging folder, prior to copying the file to the staging folder, ensure the customizations are applied to the latest version of the file.
 
 > For example, you can add a new ejb-jar.xml file to the artesia-ejb.jar file make performance adjustments. If you created or modified any configuration files in the artesia-ejb.jar file, copy these files to the <TEAMS_HOME>/staging/ear.add/ejb.add folder. The files and folders in the <TEAMS_HOME>/staging/ear.add/ejb.add folder will be added to or merged into artesiaejb.jar as part of the update installation. For example, if the folder contains a META-INF/ejb-jar.xml file, then META-INF/ejb-jar.xml will be added to artesia-ejb.jar.
 
-##### To deploy customizations on TomEE:
+#### To deploy customizations on TomEE:
 
 1. Deploy the OTMM customization in the **<TEAMS_HOME>/plugins** directory.
 2. At a command prompt or a terminal, navigate to the **<TEAMS_HOME>/install/ant** folder, and then run the following Ant target:
@@ -42,6 +54,26 @@ To deploy new custom classes:
 ```
 ant deploy-customizations
 ``` 
+
+#### Alternative way to deploy customizations
+
+1. Copy the .jar file to the **<TEAMS_HOME>/ear/artesia/lib** directory.
+2. Restart the application server 
+
+On linux:
+```
+   $ cd <TEAMS_HOME>/bin
+   $ ./startup.sh
+   $ ./stutdown.sh
+``` 
+
+On Windows:
+```
+   > cd <TEAMS_HOME>\bin
+   > .\startup.bat
+   > .\stutdown.bat
+``` 
+
 
 ## log4j.xml
 
